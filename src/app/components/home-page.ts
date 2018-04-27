@@ -151,6 +151,7 @@ export class HomePage implements OnInit{
   books$: Observable<Book[]>;
   books : Book[];
   showHelp = false;
+  subtitle : any = undefined;
 
   constructor(store: Store<fromRoot.State>,private storeService: StoreService){
     this.books$ = store.select(fromRoot.getBookCollection);

@@ -29,7 +29,7 @@ import { Component, Output, Input, EventEmitter } from '@angular/core';
     }
 
     md-card-spinner {
-      padding-left: 60px; // Make room for the spinner
+      padding-left: 60px;
     }
 
     md-spinner {
