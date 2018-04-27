@@ -1,108 +1,116 @@
-import { NgModule, } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { DBModule } from '@ngrx/db';
-import { RouterStoreModule } from '@ngrx/router-store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { MaterialModule } from '@angular/material';
+import {AppRoutingModule} from './app-routing.module';
+import {MatListModule} from '@angular/material/list';
+import {BackendService} from './services/backend.service';
+import {AppComponent} from './app.component';
+import {PrivateFormComponent} from './privateform/private-form.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatAutocompleteModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatNativeDateModule,
+  // MatDatepickerModule, MatDialogModule, MatExpansionPanel, MatFormFieldModule, MatGridListModule, MatIconModule,
+  MatMenuModule,
+  MatSelectModule, MatTabLabel, MatPaginatorModule, MatTableModule,
+  MatTabsModule, MatButtonModule, MatToolbarModule, MatSidenavModule, MatCheckboxModule, MatSnackBarModule,
+  MatTooltipModule
+} from '@angular/material';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { ComponentsModule } from './components';
-import { BookEffects } from './effects/book';
-import { CollectionEffects } from './effects/collection';
-import { BookExistsGuard } from './guards/book-exists';
+import {DataStorageService} from './services/data-storage-service.service';
 
-import { AppComponent } from './containers/app';
-import { FindBookPageComponent } from './containers/find-book-page';
-import { ViewBookPageComponent } from './containers/view-book-page';
-import { SelectedBookPageComponent } from './containers/selected-book-page';
-import { CollectionPageComponent } from './containers/collection-page';
-import { NotFoundPageComponent } from './containers/not-found-page';
-
-import { GoogleBooksService } from './services/google-books';
-
-import { routes } from './routes';
-import { reducer } from './reducers';
-import { schema } from './db';
-import { StoreService } from './store.service';
-
-import { ReactiveFormsModule } from '@angular/forms';
-import { HomePage } from './components/home-page';
+import {CustomerInfoFormComponent} from './customer-info-form/customer-info-form.component';
+import {DialogFormComponent} from './dialog-form/dialog-form';
+import {LeasingCalculatorComponent} from './leasing-calculator/leasing-calculator.component';
+import {AllInformationListComponent} from './all-information-list/all-information-list.component';
+import {CheckLeasingStatusComponent} from './check-leasing-status/check-leasing-status.component';
+import {OfficerViewComponent} from './officer-view/officer-view.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ApplicationInfoComponent} from './officer-view/application-info/application-info.component';
+import {DialogForm2Component} from './dialog-form2/dialog-form2.component';
+import { OfficerLoginComponent } from './officer-login/officer-login.component';
+import {AuthGuardService} from './services/auth-guard.service';
+import {AuthService} from './services/auth.service';
+import {FlexLayoutModule} from '@angular/flex-layout';
+// import { SideNavComponent } from './side-nav/side-nav.component';
+import {MediaMatcher} from "@angular/cdk/layout";
+import { MatThemingComponent } from './mat-theming/mat-theming.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import {SideNavComponent} from "./side-nav/side-nav.component";
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    ComponentsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(routes, { useHash: true }),
-
-    /**
-     * StoreModule.provideStore is imported once in the root module, accepting a reducer
-     * function or object map of reducer functions. If passed an object of
-     * reducers, combineReducers will be run creating your application
-     * meta-reducer. This returns all providers for an @ngrx/store
-     * based application.
-     */
-    StoreModule.provideStore(reducer),
-
-    /**
-     * @ngrx/router-store keeps router state up-to-date in the store and uses
-     * the store as the single source of truth for the router's state.
-     */
-    RouterStoreModule.connectRouter(),
-
-    /**
-     * Store devtools instrument the store retaining past versions of state
-     * and recalculating new states. This enables powerful time-travel
-     * debugging.
-     *
-     * To use the debugger, install the Redux Devtools extension for either
-     * Chrome or Firefox
-     *
-     * See: https://github.com/zalmoxisus/redux-devtools-extension
-     */
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
-
-    /**
-     * EffectsModule.run() sets up the effects class to be initialized
-     * immediately when the application starts.
-     *
-     * See: https://github.com/ngrx/effects/blob/master/docs/api.md#run
-     */
-    EffectsModule.run(BookEffects),
-    EffectsModule.run(CollectionEffects),
-
-    /**
-     * `provideDB` sets up @ngrx/db with the provided schema and makes the Database
-     * service available.
-     */
-    DBModule.provideDB(schema),
-  ],
   declarations: [
     AppComponent,
-    FindBookPageComponent,
-    SelectedBookPageComponent,
-    ViewBookPageComponent,
-    CollectionPageComponent,
-    NotFoundPageComponent,
-    HomePage
+    LeasingCalculatorComponent,
+    PrivateFormComponent,
+    CustomerInfoFormComponent,
+    DialogFormComponent,
+    LeasingCalculatorComponent,
+    CheckLeasingStatusComponent,
+    AllInformationListComponent,
+    DialogFormComponent,
+    OfficerViewComponent,
+    ApplicationInfoComponent,
+    DialogForm2Component,
+    SideNavComponent,
+    MatThemingComponent,
+    OfficerLoginComponent,
+    ScheduleComponent,
+    HomePageComponent
   ],
-  providers: [
-    BookExistsGuard,
-    GoogleBooksService,
-    StoreService
+  imports: [
+    BrowserModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    AppRoutingModule,
+    MatCheckboxModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSnackBarModule,
+    FormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatCardModule,
+    MatGridListModule,
+    MatTooltipModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatSelectModule,
+    // ChangeDetectorRefModule,
+    MatAutocompleteModule,
+    MatGridListModule,
+    MatSelectModule,
+    FlexLayoutModule,
+
+    NgbModule.forRoot()
   ],
-  bootstrap: [
-    AppComponent
-  ]
+  providers: [DataStorageService, BackendService, AuthService, AuthGuardService, MediaMatcher],
+  bootstrap: [AppComponent],
+  entryComponents: [DialogFormComponent, DialogForm2Component]
 })
-export class AppModule { }
+export class AppModule {
+}

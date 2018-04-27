@@ -1,0 +1,215 @@
+.btn-outline-primary {
+  background: #020027;
+  background-image: -webkit-linear-gradient(top, #020027, #020079);
+  background-image: -moz-linear-gradient(top, #020027, #020079);
+  background-image: -ms-linear-gradient(top, #020027, #020079);
+  background-image: -o-linear-gradient(top, #020027, #020079);
+  background-image: linear-gradient(to bottom, #020027, #020079);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: 4px 4px 10px #020079;
+  -moz-box-shadow: 4px 4px 10px #020079;
+  box-shadow: 4px 4px 10px #020079;
+  font-family: Arial, serif;
+  color: #d5d5d5;
+  font-size: 15px;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #020027;
+  border-right-width: 3px;
+  border-bottom-width: 3px;
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.btn-outline-primary:hover {
+  background: #020079;
+  background-image: -webkit-linear-gradient(top, #020079, #020027);
+  background-image: -moz-linear-gradient(top, #020079, #020027);
+  background-image: -ms-linear-gradient(top, #020079, #020027);
+  background-image: -o-linear-gradient(top, #020079, #020027);
+  background-image: linear-gradient(to bottom, #020079, #020027);
+  text-decoration: none;
+}
+
+.btn-outline-primary:active:focus {
+  color: #d5d5d5;
+  background: #020079;
+  background-image: -webkit-linear-gradient(top, #020079, #020027);
+  background-image: -moz-linear-gradient(top, #020079, #020027);
+  background-image: -ms-linear-gradient(top, #020079, #020027);
+  background-image: -o-linear-gradient(top, #020079, #020027);
+  background-image: linear-gradient(to bottom, #020079, #020027);
+  text-decoration: none;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: 4px 4px 10px #020079;
+  -moz-box-shadow: 4px 4px 10px #020079;
+  box-shadow: 4px 4px 10px #020079;
+  border: 1px solid #020027;
+  border-right-width: 3px;
+  border-bottom-width: 3px;
+}
+
+.btn-outline-secondary {
+  background: #d5d5d5;
+  background-image: -webkit-linear-gradient(top, #d5d5d5, #aaaaaa);
+  background-image: -moz-linear-gradient(top, #d5d5d5, #aaaaaa);
+  background-image: -ms-linear-gradient(top, #d5d5d5, #aaaaaa);
+  background-image: -o-linear-gradient(top, #d5d5d5, #aaaaaa);
+  background-image: linear-gradient(to bottom, #d5d5d5, #aaaaaa);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: 4px 4px 10px #aaaaaa;
+  -moz-box-shadow: 4px 4px 10px #aaaaaa;
+  box-shadow: 4px 4px 10px #aaaaaa;
+  font-family: Arial;
+  color: #020027;
+  font-size: 15px;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #9f9f9f;
+  border-right-width: 3px;
+  border-bottom-width: 3px;
+  text-decoration: none;
+}
+
+.btn-outline-secondary:hover {
+  background: #aaaaaa;
+  background-image: -webkit-linear-gradient(top, #aaaaaa, #d5d5d5);
+  background-image: -moz-linear-gradient(top, #aaaaaa, #d5d5d5);
+  background-image: -ms-linear-gradient(top, #aaaaaa, #d5d5d5);
+  background-image: -o-linear-gradient(top, #aaaaaa, #d5d5d5);
+  background-image: linear-gradient(to bottom, #aaaaaa, #d5d5d5);
+  text-decoration: none;
+}
+
+.btn-outline-secondary:active:focus {
+  color: #020027;
+  background: #aaaaaa;
+  background-image: -webkit-linear-gradient(top, #aaaaaa, #d5d5d5);
+  background-image: -moz-linear-gradient(top, #aaaaaa, #d5d5d5);
+  background-image: -ms-linear-gradient(top, #aaaaaa, #d5d5d5);
+  background-image: -o-linear-gradient(top, #aaaaaa, #d5d5d5);
+  background-image: linear-gradient(to bottom, #aaaaaa, #d5d5d5);
+  text-decoration: none;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: 4px 4px 10px #aaaaaa;
+  -moz-box-shadow: 4px 4px 10px #aaaaaa;
+  box-shadow: 4px 4px 10px #aaaaaa;
+  border: 1px solid #d5d5d5;
+  border-right-width: 3px;
+  border-bottom-width: 3px;
+}
+#smallCarLogo {
+  width: 39px;
+  height: 26px;
+}
+
+#testcard{
+
+  /*background: #d5d5d5;*/
+  /*background-image: -webkit-linear-gradient(top, #d5d5d5, #aaaaaa);*/
+  /*background-image: -moz-linear-gradient(top, #d5d5d5, #aaaaaa);*/
+  /*background-image: -ms-linear-gradient(top, #d5d5d5, #aaaaaa);*/
+  /*background-image: -o-linear-gradient(top, #d5d5d5, #aaaaaa);*/
+  /*background-image: linear-gradient(to bottom, #d5d5d5, #aaaaaa);  width: auto;*/
+  position: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+mat-card{
+
+  /*margin: 1em 2.5% 0 2.5%;*/
+  margin-top: 1em;
+  min-width: 20em;
+  width: 45%;
+  max-height: 40em;
+  /*height: 100%;*/
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /*background-color: #8C9EFF;*/
+
+  /*overflow: scroll;*/
+}
+
+.card-container {
+  /*max-width: 1400px;*/
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  /*position: absolute;*/
+
+  left: 0;
+}
+
+.background {
+  /*background: linear-gradient(pink, blue);*/
+  /*width: 1500px;*/
+  /*background-color: #EDE7F6;*/
+  /*background-color: rgba(140, 158, 255, 0.3);*/
+  background-color: rgba(192,192,192, 0.2);
+}
+
+.container {
+  /*overflow: scroll;*/
+  width: 100%;
+  height: 100%;
+}
+
+.inline-form {
+  align-items: center;
+}
+
+
+#grid {
+  margin: 1em;
+  margin-left: 2.5em;
+  margin-right: 2.5em;
+}
+
+form {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+mat-card-title{
+  position: relative;
+  left: 2.1em;
+}
+button {
+  margin: 0.5em;
+  height: 3em;
+}
+
+mat-form-field {
+  margin: 0.1em 0.4em;
+  max-width: 15.8em;
+  width: 400px;
+}
+
+
+#inputCardContent {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.text-color {
+  color: #3f51b5;
+}
+mat-card-header {
+  text-align: center;
+  justify-content: center;
+}

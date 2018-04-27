@@ -1,0 +1,21 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+
+.example-tooltip-host {
+  display: inline-flex;
+  align-items: center;
+  margin: 50px;
+}
+
+.example-select {
+  margin: 0 10px;
+}
