@@ -5,23 +5,15 @@
   "main": "index.ts",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "http-server",
     "lint": "ng lint",
     "test": "ng test --code-coverage",
     "e2e": "ng e2e",
     "build": "ng build --prod",
-    "postinstall": "ng build --aot -prod"
+    "preinstall": "npm install -g http-server",
+    "postinstall": "ng build && mv dist/* ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ngrx/example-app.git"
-  },
-  "author": "Mike Ryan",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ngrx/example-app/issues"
-  },
-  "homepage": "https://github.com/ngrx/example-app#readme",
   "engines": {
     "node": ">= 6.9.0",
     "npm": ">= 3.0.0"
