@@ -1,6 +1,6 @@
 {
   "name": "@ngrx/example-app",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Example application demoing the @ngrx platform",
   "main": "index.ts",
   "scripts": {
@@ -10,7 +10,7 @@
     "test": "ng test --code-coverage",
     "e2e": "ng e2e",
     "build": "ng build --prod",
-	"postinstall": "ng build --aot -prod"
+    "postinstall": "ng build --aot -prod"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "^1.4.9",
+    "@angular/compiler-cli": "^4.4.6",
     "@angular/animations": "^4.0.2",
     "@angular/common": "^4.0.2",
     "@angular/compiler": "^4.0.2",
@@ -49,8 +51,10 @@
     "mongodb": "^3.0.7",
     "reselect": "^3.0.0",
     "rxjs": "^5.1.0",
+    "bootstrap": "^4.0.0",
     "ts-helpers": "^1.1.1",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "typescript": "~2.3.3"
   },
   "devDependencies": {
     "@angular/cli": "^1.4.9",
