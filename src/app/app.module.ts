@@ -32,6 +32,7 @@ import { StoreService } from './store.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomePage } from './components/home-page';
+import { BookService } from './services/book.service';
 
 
 
@@ -99,7 +100,8 @@ import { HomePage } from './components/home-page';
   providers: [
     BookExistsGuard,
     GoogleBooksService,
-    StoreService
+    StoreService,
+    BookService
   ],
   bootstrap: [
     AppComponent
