@@ -10,10 +10,10 @@ import { StoreService } from '../store.service';
 @Component({
   selector: 'home-page',
   template: `
-<md-card style="text-align: center">
+<md-card (click)="showOverview()" style="text-align: center; cursor: pointer">
       <md-card-title>Home page</md-card-title>
     </md-card>
-    <div style = "
+    <div *ngIf="showOverviewCard" style = "
       display: flex;
       flex-wrap: wrap;
       justify-content: center;">
@@ -25,8 +25,8 @@ import { StoreService } from '../store.service';
           <md-card-title>Collection</md-card-title>
           <md-card-subtitle *ngIf="subtitle"></md-card-subtitle>
         </md-card-title-group>
-        <div *ngIf="!books.length" style="margin: 40px; text-align: center; background-color: #4e90bf; border: 2px solid rgba(0, 0, 0, 0.2);">
-        <span style="margin: 60px 20px; color: #ebebec">There is no books</span>
+        <div *ngIf="!books.length" style="margin: 40px; text-align: center; border: 2px solid rgba(0, 0, 0, 0.2);">
+        <span style="margin: 60px 20px; color: #7d7d84">There is no books</span>
 </div>
 <div *ngIf="books.length">
 <div style="margin: 10px; text-align: center">
@@ -52,8 +52,8 @@ import { StoreService } from '../store.service';
           <md-card-title>Purchases</md-card-title>
           <md-card-subtitle *ngIf="subtitle"></md-card-subtitle>
         </md-card-title-group>
-        <div *ngIf="!purchases.length" style="margin: 40px; text-align: center; background-color: #4e90bf; border: 2px solid rgba(0, 0, 0, 0.2);">
-        <span style="margin: 60px 20px; color: #ebebec">There is no purcheses</span>
+        <div *ngIf="!purchases.length" style="margin: 40px; text-align: center; border: 2px solid rgba(0, 0, 0, 0.2);">
+        <span style="margin: 60px 20px; color: #7d7d84">There is no purcheses</span>
 </div>
 <div *ngIf="purchases.length">
 <div style="margin: 10px">
@@ -79,10 +79,9 @@ import { StoreService } from '../store.service';
       </div>
       
       <md-card style=":hover {background-color: #00bcd4;
-    }; text-align: center" (click)="showHelpCard()">
+    }; text-align: center; cursor: pointer" (click)="showHelpCard()">
       <md-card-title>Help</md-card-title>
     </md-card>
-    
     <div *ngIf="showHelp" style = "
       display: flex;
       flex-wrap: wrap;
@@ -152,17 +151,42 @@ export class HomePage implements OnInit{
   books : Book[];
   showHelp = false;
   subtitle : any = undefined;
+  showOverviewCard: boolean = false;
 
   constructor(store: Store<fromRoot.State>,private storeService: StoreService){
     this.books$ = store.select(fromRoot.getBookCollection);
     this.purchases = storeService.purchase;
     this.books$.subscribe(
-      books => this.books = books
-    )
+      books => {
+        let newBooksArray: any [] = [];
+        console.log("books",books);
+        books.forEach(
+            book => {
+              if(!book.price){
+                console.log(this.setPrice(book));
+                newBooksArray.push(this.setPrice(book));
+              } else {
+                newBooksArray.push(book);
+              }
+            }
+        );
+        this.books = newBooksArray
+      }
+
+  );
+    this.showOverviewCard = !!this.books.length;
+  }
+
+  setPrice(book: any){
+    return Object.assign({}, book, {price: book.volumeInfo.pageCount/10});
   }
 
   showHelpCard(){
     this.showHelp = !this.showHelp;
+  }
+
+  showOverview(){
+    this.showOverviewCard = !this.showOverviewCard;
   }
 
   calculateTotalPrice(){

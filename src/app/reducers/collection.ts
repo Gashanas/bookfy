@@ -14,6 +14,27 @@ const initialState: State = {
 };
 
 export function reducer(state = initialState, action: collection.Actions): State {
+  function mapResponse(res: any){
+    let newArrayOfBooks: any[] = [];
+    res.forEach((response: any) => {
+      let mappedResponse: any;
+      let imageLinks = {
+        smallThumbnail: response.smallThumbnail,
+        thumbnail: response.thumbnail
+      };
+      let volumeInfo = Object.assign({}, response, {imageLinks: imageLinks});
+      mappedResponse = {
+        volumeInfo: volumeInfo,
+        id: response.bookid,
+        price: parseInt(response.pageCount) / 10
+      };
+      console.log(mappedResponse);
+      newArrayOfBooks.push(mappedResponse);
+    });
+    console.log(newArrayOfBooks);
+    return newArrayOfBooks;
+  }
+
   switch (action.type) {
     case collection.LOAD: {
       return Object.assign({}, state, {
@@ -22,7 +43,9 @@ export function reducer(state = initialState, action: collection.Actions): State
     }
 
     case collection.LOAD_SUCCESS: {
-      const books = action.payload;
+      const newBooksArray = mapResponse(action.payload);
+      const books = newBooksArray;
+      console.log("collection books", books);
 
       return {
         loaded: true,
@@ -33,7 +56,9 @@ export function reducer(state = initialState, action: collection.Actions): State
 
     case collection.ADD_BOOK_SUCCESS:
     case collection.REMOVE_BOOK_FAIL: {
+      // console.log(action.payload);
       const book = action.payload;
+      console.log(book);
 
       if (state.ids.indexOf(book.id) > -1) {
         return state;

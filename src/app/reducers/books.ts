@@ -16,11 +16,44 @@ export const initialState: State = {
   selectedBookId: null,
 };
 
+function mapResponse(res: any){
+  let newArrayOfBooks: any[] = [];
+  res.forEach((response: any) => {
+    let mappedResponse: any;
+    let imageLinks = {
+      smallThumbnail: response.smallThumbnail,
+      thumbnail: response.thumbnail
+    };
+    let volumeInfo = Object.assign({}, response, {imageLinks: imageLinks});
+    mappedResponse = {
+      volumeInfo: volumeInfo,
+      id: response.bookid,
+      price: parseInt(response.pageCount) / 10
+    };
+    // mappedResponse.volumeInfo= res;
+    // mappedResponse.id = res.bookid;
+    // mappedResponse.price = parseInt(res.pageCount) / 100;
+    // mappedResponse.volumeInfo.imageLinks ={
+    //   smallThumbnail: res.smallThumbnail,
+    //   thumbnail: res.thumbnail
+    // };
+    console.log(mappedResponse);
+    newArrayOfBooks.push(mappedResponse);
+  });
+  console.log(newArrayOfBooks);
+  return newArrayOfBooks;
+}
+
 export function reducer(state = initialState, action: book.Actions | collection.Actions): State {
   switch (action.type) {
     case book.SEARCH_COMPLETE:
     case collection.LOAD_SUCCESS: {
-      const books = action.payload;
+      let booksList = action.payload;
+      if(booksList.length && !booksList[0].volumeInfo){
+        booksList = mapResponse(booksList);
+      }
+      const books = booksList;
+      console.log(books);
       const newBooks = books.filter(book => !state.entities[book.id]);
 
       const newBookIds = newBooks.map(book => book.id);
@@ -66,15 +99,6 @@ export function reducer(state = initialState, action: book.Actions | collection.
     }
   }
 }
-
-/**
- * Because the data structure is defined within the reducer it is optimal to
- * locate our selector functions at this level. If store is to be thought of
- * as a database, and reducers the tables, selectors can be considered the
- * queries into said database. Remember to keep your selectors small and
- * focused so they can be combined and composed to fit each particular
- * use-case.
- */
 
 export const getEntities = (state: State) => state.entities;
 

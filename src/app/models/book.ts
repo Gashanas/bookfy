@@ -17,7 +17,7 @@ export class Book {
   };
   price: number;
 
-  constructor(book: Book) {
+  constructor(book?: Book) {
     this.id = book.id;
     this.volumeInfo = book.volumeInfo;
     this.price = this.volumeInfo.pageCount/10 || 10;

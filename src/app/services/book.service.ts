@@ -19,21 +19,20 @@ export class BookService {
         headers.append('Content-Type', 'application/json');
     }
 
-    getBooks(): Observable<Book> {
+    getBooks(): Observable<Book[]> {
         const headers = new Headers();
         this.createAuthorizationHeader(headers);
         return this.http.get(
-            `${environment.apiUrl}/v1/books`, { headers })
-            .map((res: Response) => this.book = res.json())
+            `${environment.apiUrl}api/v1/books`)
+            .map((res: Response) => res.json())
             .catch(this.handleError);
     }
 
-    deleteBook(id: number) {
+    deleteBook(id: string) {
         const headers = new Headers();
         this.createAuthorizationHeader(headers);
-        return this.http.post(
-            `${environment.apiUrl}/v1/book`,
-            id, { headers })
+        return this.http.delete(
+            `${environment.apiUrl}api/v1/book/${id}`)
             .map((res: Response) => res.json().data)
             .catch(this.handleError);
     }
@@ -42,7 +41,7 @@ export class BookService {
         const headers = new Headers();
         this.createAuthorizationHeader(headers);
         return this.http.post(
-            `${environment.apiUrl}/v1/book`, book, { headers })
+            `${environment.apiUrl}api/v1/book`, book, { headers })
             .map((res: Response) => res.json())
             .catch(this.handleError);
     }
